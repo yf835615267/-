@@ -51,21 +51,20 @@ def base_practice(timer_voice: pyttsx3.engine.Engine):
     am_or_pm = time.localtime()
 
     vc.timer_begin(timer_voice)
-    return
     # 热身运动
     t1, t2 = vc.practice_item(practice_list_reshen, 1, timer_voice)
     time_item_all = time_item_all + t1
     time_yundong_all = time_yundong_all + t2
 
-    if am_or_pm.tm_hour > 12:
+    if am_or_pm.tm_hour < 12:
         # 腹部燃脂
-        vc.timer_say(timer_voice, "PM.下午   腹部燃脂")
+        vc.timer_say(timer_voice, "AM.上午   腹部燃脂")
         t1, t2 = vc.practice_item(practice_list_fubu, 5, timer_voice)
         time_item_all = time_item_all + t1
         time_yundong_all = time_yundong_all + t2
     else:
         # 全身燃脂
-        vc.timer_say(timer_voice, "AM.上午   全身燃脂")
+        vc.timer_say(timer_voice, "PM.下午   全身燃脂")
         t1, t2 = vc.practice_item(practice_list_quanshen, 5, timer_voice)
         time_item_all = time_item_all + t1
         time_yundong_all = time_yundong_all + t2
